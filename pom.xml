@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.own</groupId>
+    <artifactId>own-parent</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>own-programs-gateway</artifactId>
+  <packaging>pom</packaging>
+  <name>own-programs-gateway</name>
+  <modules>
+  	<module>own-public</module>
+  	<module>own-programs-web</module>
+  	<module>own-programs-service</module>
+  	<module>own-programs-task</module>
+  </modules>
+  
+  <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.own</groupId>
+				<artifactId>own-programs-base</artifactId>
+				<version>${own.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.own</groupId>
+				<artifactId>own-programs-core</artifactId>
+				<version>${own.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.own</groupId>
+				<artifactId>own-programs-dao</artifactId>
+				<version>${own.version}</version>
+			</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+</project>

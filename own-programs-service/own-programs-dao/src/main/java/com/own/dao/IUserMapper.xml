@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.own.dao.IUserMapper" >
+  <resultMap id="BaseResultMap" type="com.own.base.entity.UserDO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="position_desc" property="positionDesc" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="departid" property="departid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userName, real_name, password, email, phone, position, position_desc, status, 
+    createTime, departid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_s_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_s_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.own.base.entity.UserDO" >
+    insert into t_s_user (id, userName, real_name, 
+      password, email, phone, 
+      position, position_desc, status, 
+      createTime, departid)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{positionDesc,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{departid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.own.base.entity.UserDO" >
+    insert into t_s_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="positionDesc != null" >
+        position_desc,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="departid != null" >
+        departid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="positionDesc != null" >
+        #{positionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="departid != null" >
+        #{departid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.own.base.entity.UserDO" >
+    update t_s_user
+    <set >
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="positionDesc != null" >
+        position_desc = #{positionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="departid != null" >
+        departid = #{departid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.own.base.entity.UserDO" >
+    update t_s_user
+    set userName = #{username,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      position_desc = #{positionDesc,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      departid = #{departid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     t_s_user
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="username != null" >
+         and userName= #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="realName != null" >
+         and real_name= #{realName,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null" >
+         and password= #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null" >
+         and email= #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null" >
+         and phone= #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="position != null" >
+         and position= #{position,jdbcType=VARCHAR}
+      </if>
+      <if test="positionDesc != null" >
+         and position_desc= #{positionDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+         and status= #{status,jdbcType=INTEGER}
+      </if>
+      <if test="createtime != null" >
+         and createTime= #{createtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="departid != null" >
+         and departid= #{departid,jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="order != null" >
+      <![CDATA[  order by  ${order} ]]>
+    </if>
+  </select>
+  <select id="selectPageList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     t_s_user
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="username != null" >
+         and userName= #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="realName != null" >
+         and real_name= #{realName,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null" >
+         and password= #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null" >
+         and email= #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null" >
+         and phone= #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="position != null" >
+         and position= #{position,jdbcType=VARCHAR}
+      </if>
+      <if test="positionDesc != null" >
+         and position_desc= #{positionDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+         and status= #{status,jdbcType=INTEGER}
+      </if>
+      <if test="createtime != null" >
+         and createTime= #{createtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="departid != null" >
+         and departid= #{departid,jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="order != null" >
+      <![CDATA[  order by  ${order} ]]>
+    </if>
+    <if test="page != null" >
+      <![CDATA[  limit #{page.begin}, #{page.length} ]]>
+    </if>
+  </select>
+  <select id="selectCount" resultType="int" parameterType="java.util.Map" >
+     select
+     count(1)
+     from 
+     t_s_user
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="username != null" >
+         and userName= #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="realName != null" >
+         and real_name= #{realName,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null" >
+         and password= #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null" >
+         and email= #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null" >
+         and phone= #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="position != null" >
+         and position= #{position,jdbcType=VARCHAR}
+      </if>
+      <if test="positionDesc != null" >
+         and position_desc= #{positionDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+         and status= #{status,jdbcType=INTEGER}
+      </if>
+      <if test="createtime != null" >
+         and createTime= #{createtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="departid != null" >
+         and departid= #{departid,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectOne" resultMap="BaseResultMap" parameterType="com.own.base.entity.UserDO" >
+    select 
+    <include refid="Base_Column_List" />
+     from 
+     t_s_user
+    <where >
+      <if test="id != null" >
+         and id= #{id,jdbcType=VARCHAR}
+      </if>
+      <if test="username != null" >
+         and userName= #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="realName != null" >
+         and real_name= #{realName,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null" >
+         and password= #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null" >
+         and email= #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null" >
+         and phone= #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="position != null" >
+         and position= #{position,jdbcType=VARCHAR}
+      </if>
+      <if test="positionDesc != null" >
+         and position_desc= #{positionDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null" >
+         and status= #{status,jdbcType=INTEGER}
+      </if>
+      <if test="createtime != null" >
+         and createTime= #{createtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="departid != null" >
+         and departid= #{departid,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>
