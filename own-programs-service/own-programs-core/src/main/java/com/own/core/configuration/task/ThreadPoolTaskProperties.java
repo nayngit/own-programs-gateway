@@ -1,9 +1,7 @@
 package com.own.core.configuration.task;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-//import org.springframework.stereotype.Component;
 
-//@Component
 @ConfigurationProperties(prefix="thread.pool.task")
 public class ThreadPoolTaskProperties {
 
