@@ -6,13 +6,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
 import com.own.core.configuration.TuLingApiProperties;
 import com.own.core.service.IPublicNumberService;
 import com.own.core.utils.ArticleUtil;
+import com.own.core.utils.LoggerProxyFactory;
 import com.own.core.utils.MessageUtils;
 import com.own.core.utils.TextUtil;
 import com.own.core.utils.TypeUtils;
@@ -20,7 +20,7 @@ import com.own.core.utils.TypeUtils;
 @Service
 public class PublicNumberServiceImpl implements IPublicNumberService{
 
-	private static final Logger LOG = LoggerFactory.getLogger(PublicNumberServiceImpl.class);
+	private static final Logger LOG = LoggerProxyFactory.getLogger(PublicNumberServiceImpl.class);
 	
 	@Resource
 	private TuLingApiProperties tuLingApiProperties;
