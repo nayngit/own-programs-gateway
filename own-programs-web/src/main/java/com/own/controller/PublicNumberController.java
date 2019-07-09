@@ -8,20 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.own.core.configuration.PublicNumberApiProperties;
 import com.own.core.service.IPublicNumberService;
+import com.own.core.utils.LoggerProxyFactory;
 import com.own.core.utils.PublicNumberSignUtil;
 
 @RestController
 @RequestMapping("/v1/publicNumber")
 public class PublicNumberController {
 
-	private static final Logger LOG = LoggerFactory.getLogger(PublicNumberController.class);
+	private static final Logger LOG = LoggerProxyFactory.getLogger(PublicNumberController.class);
 	
 	@Resource
 	private PublicNumberApiProperties publicNumberApiProperties;
@@ -46,7 +46,7 @@ public class PublicNumberController {
 				String echostr = request.getParameter("echostr");
 				
 				if(PublicNumberSignUtil.checkSignature(publicNumberApiProperties.getTokenString(), signature, timestamp, nonce)){
-					System.out.println("token验证通过!");
+					LOG.info("[个人公众号] token验证通过!");
 					out.write(echostr);
 				}
 			}else{
@@ -61,6 +61,7 @@ public class PublicNumberController {
 				}
 			}
 		} catch (Exception e) {
+			LOG.error("[个人公众号] 发生异常,e:{}",new Object[] {e});
 			e.printStackTrace();
 		}finally{
 			out.close();

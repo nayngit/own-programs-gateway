@@ -64,7 +64,7 @@ public class PublicNumberServiceImpl implements IPublicNumberService{
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOG.info("[个人公众号-处理消息] 发生异常,e:{}",new Object[]{e});
 		}
 		return respMessage;
 	}
