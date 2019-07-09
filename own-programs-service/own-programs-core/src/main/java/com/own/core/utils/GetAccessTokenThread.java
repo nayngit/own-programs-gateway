@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 
+import com.alibaba.fastjson.JSON;
 import com.own.base.publicnumber.AccessTokenRes;
 import com.own.core.configuration.PublicNumberApiProperties;
 import com.own.core.service.IGetAccessTokenService;
@@ -30,8 +31,10 @@ public class GetAccessTokenThread implements Runnable{
 		
 		while(true){
 			try {
+				LOG.info("[获取token] 请求开始。。。。");
+				LOG.info("[获取token] getAccessTokenService:{}",new Object[] {JSON.toJSONString(getAccessTokenService)});
 				accessToken = getAccessTokenService.getAccessToken();
-				
+				LOG.info("[获取token] 请求结束。。。。");
 				LOG.info("[获取token] token:{}",new Object[] {accessToken.getAccess_token()});
 				if(null != accessToken){
 					Thread.sleep((accessToken.getExpires_in() - 200) * 1000); 
