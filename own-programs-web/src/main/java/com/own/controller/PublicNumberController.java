@@ -48,6 +48,8 @@ public class PublicNumberController {
 				if(PublicNumberSignUtil.checkSignature(publicNumberApiProperties.getTokenString(), signature, timestamp, nonce)){
 					LOG.info("[个人公众号] token验证通过!");
 					out.write(echostr);
+				}else {
+					LOG.info("[个人公众号] token验证失败!");
 				}
 			}else{
 				String respMessage = "异常消息！";
