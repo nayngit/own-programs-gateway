@@ -15,8 +15,8 @@ import com.own.core.configuration.task.MyThreadPoolTaskExecutor;
 
 public class ThreadPoolTaskExecutorTest extends BaseTest{
 
-	@Resource
-	private MyThreadPoolTaskExecutor myThreadPoolTaskExecutor;
+//	@Resource
+//	private MyThreadPoolTaskExecutor myThreadPoolTaskExecutor;
 	
 //	@Test
 //	public void test01(){
