@@ -3,6 +3,7 @@ package com.own.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -10,6 +11,7 @@ import com.own.common.utils.UUIDGenerator;
 import com.own.core.utils.IpAddressUtil;
 import com.own.core.utils.ReqNoUtils;
 
+@Service
 public class LogInterceptor implements HandlerInterceptor{
 
 	@Override
