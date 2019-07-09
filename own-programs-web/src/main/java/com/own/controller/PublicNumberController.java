@@ -57,12 +57,11 @@ public class PublicNumberController {
 					LOG.info("[个人公众号，返回数据]，respMessage:{}",new Object[]{respMessage});
 					out.write(respMessage);
 				} catch (Exception e) {
-					e.printStackTrace();
+					LOG.error("[个人公众号] 发生异常,e:{}",new Object[] {e});
 				}
 			}
 		} catch (Exception e) {
 			LOG.error("[个人公众号] 发生异常,e:{}",new Object[] {e});
-			e.printStackTrace();
 		}finally{
 			out.close();
 		}

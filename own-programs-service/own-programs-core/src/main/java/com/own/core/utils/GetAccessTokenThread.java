@@ -2,6 +2,8 @@ package com.own.core.utils;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+
 import com.own.base.publicnumber.AccessTokenRes;
 import com.own.core.configuration.PublicNumberApiProperties;
 import com.own.core.service.IGetAccessTokenService;
@@ -12,6 +14,8 @@ import com.own.core.service.IGetAccessTokenService;
  *
  */
 public class GetAccessTokenThread implements Runnable{
+	
+	private static final Logger LOG = LoggerProxyFactory.getLogger(GetAccessTokenThread.class);
 
 	@Resource
 	private PublicNumberApiProperties publicNumberApiProperties;
@@ -28,7 +32,7 @@ public class GetAccessTokenThread implements Runnable{
 			try {
 				accessToken = getAccessTokenService.getAccessToken();
 				
-				System.out.println("token:" + accessToken.getAccess_token());
+				LOG.info("[获取token] token:{}",new Object[] {accessToken.getAccess_token()});
 				if(null != accessToken){
 					Thread.sleep((accessToken.getExpires_in() - 200) * 1000); 
 				}else{
@@ -38,9 +42,9 @@ public class GetAccessTokenThread implements Runnable{
 				try {
 					Thread.sleep(60 * 1000);
 				} catch (InterruptedException e1) {
-					e1.printStackTrace();
+					LOG.error("[获取token] 发生异常,e1:{}",new Object[] {e1});
 				}
-				e.printStackTrace();
+				LOG.error("[获取token] 发生异常,e:{}",new Object[] {e});
 			}
 		}
 	}
