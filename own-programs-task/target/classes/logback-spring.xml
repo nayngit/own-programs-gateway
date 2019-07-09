@@ -6,7 +6,7 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 
 	<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-	<property name="LOG_HOME" value="D:weiinenigmaDocumentslog/own-programs-task" />
+	<property name="LOG_HOME" value="/root/logs/own-programs-task" />
 	
 	<!--控制台日志 start -->
 	<appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
