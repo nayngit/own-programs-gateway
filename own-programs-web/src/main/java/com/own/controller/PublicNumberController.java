@@ -35,13 +35,13 @@ public class PublicNumberController {
 	
 	@RequestMapping(value = "/connect.do", method = {RequestMethod.GET,RequestMethod.POST})
     public void checkToken(HttpServletRequest request,HttpServletResponse response) throws IOException{
-		redisClient.setString("123", "456", 0);
+//		redisClient.setString("123", "456", 0);
     	// 将请求、响应的编码均设置为UTF-8（防止中文乱码）
         request.setCharacterEncoding("UTF-8");// 将请求、响应的编码均设置为UTF-8（防止中文乱码）
         response.setCharacterEncoding("UTF-8");//在响应消息（回复消息给用户）时，也将编码方式设置为UTF-8，原理同上；
         boolean isGet = request.getMethod().toLowerCase().equals("get");
         PrintWriter out = response.getWriter();
-        LOG.info("[redis测试] redis:{}",new Object[] {redisClient.getString("123")});
+//        LOG.info("[redis测试] redis:{}",new Object[] {redisClient.getString("123")});
         try {
 			if(isGet){
 				String signature = request.getParameter("signature");
