@@ -44,13 +44,17 @@ public class TextUtil {
 		LOG.info("[个人公众号-图灵] 返回数据,sendPost:{}",new Object[] {sendPost});
 		JSONObject jsonObject = JSON.parseObject(sendPost);
 		Integer code = jsonObject.getInteger("code");
+		LOG.info("[个人公众号-图灵] 数据,code:{}",new Object[] {code});
 		String t = jsonObject.getString("text");
 		switch (code) {
 			case 100000:text.setContent(t);	break;
 			case 200000:text.setContent(t+"\n"+jsonObject.getString("url"));	break;
 			case 302000:text.setContent(t+"\n"+TuLingApiUtil.getNews(jsonObject));	break;
 			case 308000:text.setContent(t+"\n"+TuLingApiUtil.getCookBook(jsonObject));	break;
-		default:text.setContent((String) TuLingApiUtil.getText().get(code));
+		default:
+			String con = (String) TuLingApiUtil.getText().get(code+"");
+			LOG.info("[个人公众号-图灵] 数据,con:{}",new Object[] {con});
+			text.setContent(con);
 			break;
 		}
 	}
