@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.own.base.contants.PublicNumberContants;
@@ -11,6 +13,8 @@ import com.own.base.publicnumber.message.res.TextMessage;
 import com.own.common.utils.HttpUtils;
 
 public class TextUtil {
+	
+	private static final Logger LOG = LoggerProxyFactory.getLogger(TextUtil.class);
 
 	public static String respText(Map<String,String> requestMap,String message,String key){
 		
@@ -37,6 +41,7 @@ public class TextUtil {
 		map.put("info", info);
 		map.put("key", key);
 		String sendPost = HttpUtils.sendPost(PublicNumberContants.ACCESS_TU_LING_URL, map, "UTF-8");
+		LOG.info("[个人公众号-图灵] 返回数据,sendPost:{}",new Object[] {sendPost});
 		JSONObject jsonObject = JSON.parseObject(sendPost);
 		Integer code = jsonObject.getInteger("code");
 		String t = jsonObject.getString("text");
