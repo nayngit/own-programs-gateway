@@ -52,9 +52,7 @@ public class TextUtil {
 			case 302000:text.setContent(t+"\n"+TuLingApiUtil.getNews(jsonObject));	break;
 			case 308000:text.setContent(t+"\n"+TuLingApiUtil.getCookBook(jsonObject));	break;
 		default:
-			String con = (String) TuLingApiUtil.getText().get(code+"");
-			LOG.info("[个人公众号-图灵] 数据,con:{}",new Object[] {con});
-			text.setContent(con);
+			text.setContent((String) TuLingApiUtil.getText().get(code+""));
 			break;
 		}
 	}
