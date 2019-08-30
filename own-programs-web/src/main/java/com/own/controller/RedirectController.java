@@ -21,7 +21,7 @@ public class RedirectController {
                 Cookie cookie = new Cookie("redirect", "redirectm");
 //                cookie.setPath("/");
 //                cookie.setMaxAge(60*30);
-//                cookie.setDomain("https://xyylcdn.weein.cn");
+                cookie.setDomain("192.168.0.104");
         response.addCookie(cookie );
         String url = "https://xyylcdn.weein.cn/membercenter/membercenter-h5-view/activity_basketball/index.html?activityId=basketball";
         return new ModelAndView("redirect:" + url);
